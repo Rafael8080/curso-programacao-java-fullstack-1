@@ -1,5 +1,7 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
 
 //As classes s√£o sempre no singular, pensando forma mais abstrata possivel
 public class Aluno {
@@ -16,16 +18,17 @@ public class Aluno {
     private String nomeEscola;
     private String serieMatriculado;
     
-    private Disciplina disciplina = new Disciplina();
+    /*Listas sempre no plural, por que È uma lista d„„„„*/
+    private List <Disciplina> disciplina = new ArrayList<Disciplina>();
     
-    public Disciplina getDisciplina() {
-		return disciplina;
-	}
-    
-    public void setDisciplina(Disciplina disciplina) {
+    public void setDisciplina(List<Disciplina> disciplina) {
 		this.disciplina = disciplina;
 	}
 
+    public List<Disciplina> getDisciplina() {
+		return disciplina;
+	}
+    
 	public Aluno() {//Cria os dados na memoria - Sendo padr„o do Java
     	
     }
@@ -125,7 +128,15 @@ public class Aluno {
 	}
     
 	public double getMediaNota() {
-		return (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
+		
+		double somaNotas = 0.0;
+			
+		for (Disciplina disciplina : disciplina) {
+			somaNotas += disciplina.getNota();
+	
+		}
+		
+		return somaNotas / disciplina.size();
 	}
 	
 	public boolean getAlunoAprovado() {
@@ -146,7 +157,7 @@ public class Aluno {
 		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
 				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
 				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
-				+ serieMatriculado + ", disciplina=" + disciplina + "]";
+				+ serieMatriculado + "]";
 	}
 
 	@Override
