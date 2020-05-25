@@ -3,17 +3,12 @@ package cursojava.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import cursojava.constantes.StatusAluno;
+
 //As classes sÃ£o sempre no singular, pensando forma mais abstrata possivel
-public class Aluno {
+public class Aluno extends Pessoa{
 
 	//Esses são os atributos dos alunos
-    private String nome;
-    private int idade;
-    private String dataNascimento;
-    private String registroGeral;
-    private String numeroCpf;
-    private String nomeMae;
-    private String nomePai;
     private String dataMatricula;
     private String nomeEscola;
     private String serieMatriculado;
@@ -153,12 +148,12 @@ public class Aluno {
 		double media = this.getMediaNota();
 		if (media >= 50) {
 			if(media >= 70) {
-				return "Aluno está aprovado";
+				return StatusAluno.APROVADO;
 			} else {
-				return "Aluno em recuperção";
+				return StatusAluno.RECUPERACAO;
 			}
 		}else {
-			return "Aluno está reprovado";
+			return StatusAluno.REPROVADO;
 		}
 	}
 	
@@ -204,7 +199,23 @@ public class Aluno {
 	}
 
 	
+	@Override /*Identifica método sobrescrito*/
+	public boolean pessoaMaiorIdade() {
+		
+		return idade >= 21;
+		//return super.pessoaMaiorIdade();
+		
+	}
 	
+	public String msgMaiorIdade() {
+		return this.pessoaMaiorIdade() ? "Obaa aluno é maior de idade" : "Ixii vc é menor de idade";
+	}
+
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 1500.90;
+	}
 	
 	
 	
