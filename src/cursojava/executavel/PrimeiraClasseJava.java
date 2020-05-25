@@ -15,15 +15,16 @@ import cursojava.interfaces.PermitirAcesso;
 public class PrimeiraClasseJava {
 	// Main é um metodo executavel em Java
 	public static void main(String[] args) {
-
+		
+		//Se atente para não quebrar estruturas adicionando atributos ou métodos sem necessidade
+		
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
 		
-		PermitirAcesso secretario = new Secretario();/*Trabalha diretamente com objeto*/
-
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
 		/*Se true acessa se false não acessa*/
-		if (secretario.autenticar(login, senha)) {
+		if (permitirAcesso.autenticar()) {
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 

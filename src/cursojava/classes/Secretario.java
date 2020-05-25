@@ -9,23 +9,17 @@ public class Secretario extends Pessoa implements PermitirAcesso {
 	private String experiencia;
 	
 	private String login;
-	
 	private String senha;
 	
-	
-	
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
+	public Secretario(String login, String senha) {
 		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public Secretario() {
+		
+	}
+	
 	public String getRegistro() {
 		return registro;
 	}
@@ -58,10 +52,20 @@ public class Secretario extends Pessoa implements PermitirAcesso {
 	}
 	
 	/*Esse é o metodo do contrato de autenticação*/
+	
+	@Override
+	public boolean autenticar(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+		
+		return autenticar();
+		
+	}
+	
 	@Override
 	public boolean autenticar() {
 		
-		return login.equals("admin") && senha.equals("admin");/*Retorna sim caso login e senha seja true*/
+		return login.equals("admin") && senha.equals("admin");
 		
 	}
 	
