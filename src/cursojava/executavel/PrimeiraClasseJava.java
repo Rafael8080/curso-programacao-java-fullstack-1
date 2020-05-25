@@ -7,10 +7,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
-import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticao;
 import cursojava.constantes.StatusAluno;
-import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
 	// Main é um metodo executavel em Java
@@ -21,10 +21,8 @@ public class PrimeiraClasseJava {
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
 		
-		PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
-		/*Se true acessa se false não acessa*/
-		if (permitirAcesso.autenticar()) {
+		if (new FuncaoAutenticao(new Diretor(login, senha)).autenticar()) { /*Vou travar o contrato para autorizar somente quem realmente tem o contrato 100 porcento legitimo*/
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 
