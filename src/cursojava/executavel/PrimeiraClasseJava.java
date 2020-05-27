@@ -15,7 +15,7 @@ import cursojava.constantes.StatusAluno;
 public class PrimeiraClasseJava {
 	// Main é um metodo executavel em Java
 	public static void main(String[] args) {
-		
+		try {
 		//Se atente para não quebrar estruturas adicionando atributos ou métodos sem necessidade
 		
 		String login = JOptionPane.showInputDialog("Informe o login");
@@ -32,11 +32,12 @@ public class PrimeiraClasseJava {
 			 */
 			HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
-			for (int qtd = 1; qtd <= 5; qtd++) {
+			for (int qtd = 1; qtd <= 2; qtd++) {
 
 				String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ?");
+				String idade = JOptionPane.showInputDialog("Qual sua idade?");
 				/*
-				 * String idade = JOptionPane.showInputDialog("Qual sua idade?"); String
+				 String
 				 * dataNascimento = JOptionPane.showInputDialog("Data de nascimento?"); String
 				 * rg = JOptionPane.showInputDialog("Registro Geral?"); String cpf =
 				 * JOptionPane.showInputDialog("Qual é o CPF?"); String mae =
@@ -50,8 +51,10 @@ public class PrimeiraClasseJava {
 				// Aqui será em Java
 				Aluno aluno1 = new Aluno();
 				aluno1.setNome(nome);
+				aluno1.setIdade(Integer.valueOf(idade));
+				
 				/*
-				 * aluno1.setIdade(Integer.valueOf(idade));
+				 * 
 				 * aluno1.setDataNascimento(dataNascimento); aluno1.setRegistroGeral(rg);
 				 * aluno1.setNumeroCpf(cpf); aluno1.setNomeMae(mae); aluno1.setNomePai(pai);
 				 * aluno1.setDataMatricula(matricula); aluno1.setSerieMatriculado(serie);
@@ -123,7 +126,31 @@ public class PrimeiraClasseJava {
 			JOptionPane.showMessageDialog(null, "Acesso não permitidio");
 		}
 		//Fecha Login
-
+		} catch (Exception e) {
+			
+			StringBuilder saida = new StringBuilder();
+			
+			/* Imprime erro no consoole java */
+			e.printStackTrace();
+			
+			/* Mensagem do erro ou causa */
+			System.out.println(" Mensagem: " + e.getMessage());
+			
+			for (int i = 0; i <= e.getStackTrace().length; i++) {
+				//System.out.println( "Classe de erro : " + e.getStackTrace()[i].getClassName());
+				//System.out.println("Método de erro : " + e.getStackTrace()[i].getMethodName());
+				//System.out.println("Linha de erro : " + e.getStackTrace()[i].getLineNumber());
+				
+				saida.append( "\n Classe de erro : " + e.getStackTrace()[i].getClassName());
+				saida.append("\n Método de erro : " + e.getStackTrace()[i].getMethodName());
+				saida.append("\n Linha de erro : " + e.getStackTrace()[i].getLineNumber());
+				saida.append("\n Class : " + e.getClass().getName());
+				
+			}
+			
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas" + saida.toString());
+			
+		}
 	} // Fecha Main
 
 } // Fecha class
