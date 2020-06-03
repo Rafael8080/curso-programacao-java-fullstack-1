@@ -22,7 +22,7 @@ public class PrimeiraClasseJava {
 		try {
 			// Se atente para não quebrar estruturas adicionando atributos ou métodos sem
 			// necessidade
-			lerArquivo();
+			
 			
 			String login = JOptionPane.showInputDialog("Informe o login");
 			String senha = JOptionPane.showInputDialog("Informe a senha");
@@ -164,12 +164,7 @@ public class PrimeiraClasseJava {
 
 			JOptionPane.showMessageDialog(null, "Opaa um null pointer exception " + e.getClass());
 
-		} catch (ExcecaoProcessarNota e) {
-			
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro da excessao customizada inesperado : " + e.getClass().getName());
-			 
-		} finally {/*Sempre é executado ocorrendo erros ou não*/
+		}  finally {/*Sempre é executado ocorrendo erros ou não*/
 			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo");
 		}
 
