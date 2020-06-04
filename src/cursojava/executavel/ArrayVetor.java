@@ -18,9 +18,6 @@ public class ArrayVetor {
 		//Criação das disciplins
 		Disciplina disciplina = new Disciplina();
 		disciplina.setDisciplina("Curso de Java");
-		
-		
-		
 		disciplina.setNota(notas);
 		
 		aluno.getDisciplina().add(disciplina);
@@ -31,27 +28,48 @@ public class ArrayVetor {
 		
 		aluno.getDisciplina().add(disciplina2);
 		
-		System.out.println("Nome do aluno = " + aluno.getNome() + " inscrito no curso : " + aluno.getNomeEscola());
-		System.out.println(" ------Disciplina do aluno--------- ");
+		//------------------
 		
-		for (Disciplina d : aluno.getDisciplina()) {
+		Aluno aluno2 = new Aluno();
+		aluno.setNome("Alex Fernando Egidio 2");
+		aluno.setNomeEscola("JDEV Treinamento 2");
+		
+		//Criação das disciplins
+		Disciplina disciplina3 = new Disciplina();
+		disciplina3.setDisciplina("Curso de Java 3");
+		disciplina3.setNota(notas);
+		
+		aluno.getDisciplina().add(disciplina3);
+		
+		Disciplina disciplina4 = new Disciplina();
+		disciplina4.setDisciplina("Logica de programação 3");
+		disciplina4.setNota(notas);
+		
+		aluno.getDisciplina().add(disciplina4);
+		
+		
+		
+		//-----------------------------------------------
+		
+		Aluno[] arrayAlunos = new Aluno[2];
+		arrayAlunos[0] = aluno;
+		arrayAlunos[1] = aluno;
+		
+		for (int pos = 0; pos < arrayAlunos.length; pos++) {
 			
-			System.out.println(" Disciplina : " + d.getDisciplina());
-			System.out.println("A notas da disciplina são");
+			System.out.println("Nome do aluno é: " + arrayAlunos[pos].getNome());
 			
-			double notaMax = 0.0;
-			for (int pos = 0; pos < d.getNota().length; pos++) {
-				System.out.println("Nota " + pos + " é igual = " + d.getNota()[pos]);
+			for (Disciplina d : arrayAlunos[pos].getDisciplina()) {
 				
-				if (pos == 0) {
-					notaMax = d.getNota()[pos];
-				}else {
-					if (d.getNota()[pos] > notaMax) {
-						notaMax = d.getNota()[pos];
-					}
+				System.out.println("Nome da disciplina é : " + d.getDisciplina());
+				
+				for (int posnota = 0; posnota < d.getNota().length; posnota++) {
+					
+					System.out.println("A nota número :" + posnota + " é Igual = " + d.getNota()[posnota]);
+					
 				}
+				
 			}
-			System.out.println("A maior nota da Disciplina = " + d.getDisciplina() + " e de valor : " + notaMax);
 			
 		}
 		
